@@ -19,6 +19,21 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+app.get('/test',(req,res)=>{
+  res.render('test');
+})
+app.post('/upload',(req,res)=>{
+  console.log(req.body);
+})
+
+
+
+
+
 app.post('/register', async(req, res) => {
   const{name,username,age,email,password}=req.body;
   let user= await userModel.findOne({email});
