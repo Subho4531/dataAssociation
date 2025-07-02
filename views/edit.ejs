@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-full h-screen bg-zinc-900 p-10">
+        <h1 class="text-3xl text-white mb-4">Edit</h1>
+        <form class="flex gap-3 flex-col items-center " action="/edit/<%=post._id%>" method="post">
+            <input class=" w-52 text-blue-500 px-3 py-2 rounded-lg" type="button" value="User : @<%=post.user.username%>"  >
+            <textarea class="border-2 border-zinc-600 w-72 h-40 text-white px-3 py-2 rounded-lg"   name="content"><%=post.content%></textarea>
+            <input class="bg-yellow-500 hover:bg-yellow-700 text-white py-2 px-3 rounded" type="submit" value="Edit">
+        </form>
+    </div>
+</body>
+</html>
