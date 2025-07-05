@@ -6,22 +6,25 @@ const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const multerconfig = require("./config/multer.config");
+const path = require("path");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname,"public")));
 app.set("view engine", "ejs");
 app.use(cookieParser());
+
+
 
 app.get("/", (req, res) => {
   res.render("index");
 });
-app.get("/login", (req, res) => {
-  res.render("login");
-});
+
 
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
 
 app.get("/upload", (req, res) => {
   res.render("dpedit");
@@ -79,7 +82,7 @@ app.get("/profile", checklogin, async (req, res) => {
   let user = await userModel
     .findOne({ email: req.user.email })
     .populate("posts");
-
+  console.log(user)
   res.render("profile", { user });
 });
 
